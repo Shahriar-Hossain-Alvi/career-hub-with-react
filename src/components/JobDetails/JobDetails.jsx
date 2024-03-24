@@ -7,18 +7,25 @@ import { CiMail } from "react-icons/ci";
 import './JobDetails.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { saveJobApplication } from "../../Utility/LocalStorage";
 
 
 const JobDetails = () => {
-    const notify = () => toast("Applied Succesfully");
+
     const jobs = useLoaderData();
     const { id } = useParams();
     const idInt = parseInt(id);
     const job = jobs.find(job => job.id === idInt);
+
+    const handleApplyNow = () =>{
+        saveJobApplication(idInt);
+        toast("Applied Successfully");
+    }
+
     return (
         <div>
             {/* banner */}
-            <p className="absolute left-[50%] top-44 mb-7 font-black text-[#1A1919] text-4xl text-center">{job.company_name}</p>
+            <p className="absolute left-[45%] top-44 mb-7 font-black text-[#1A1919] text-4xl text-center">{job.company_name}</p>
 
             <div className="flex">
                 <div className="w-1/2 pt-32 pb-36 jobDetails-banner1"></div>
@@ -69,7 +76,7 @@ const JobDetails = () => {
                                 <p className="text-xl font-bold text-[#474747]">Address :<span className="font-medium text-[#757575]">{job.contact_information.address}</span></p>
                             </div>
                         </div>
-                        <button onClick={notify} className="btn w-full mt-4 text-xl font-extrabold bg-gradient-to-r from-[#7E90FE] to-[#9873FF] text-white hover:from-[#9873FF] hover:to-[#9873FF]">Apply Now</button>
+                        <button onClick={handleApplyNow} className="btn w-full mt-4 text-xl font-extrabold bg-gradient-to-r from-[#7E90FE] to-[#9873FF] text-white hover:from-[#9873FF] hover:to-[#9873FF]">Apply Now</button>
                     </div>
                     <ToastContainer />
                 </div>
