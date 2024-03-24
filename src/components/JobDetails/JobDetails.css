@@ -1,0 +1,13 @@
+.jobDetails-banner1{
+    background: url("../../assets/images/bg1.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 300px;
+}
+
+.jobDetails-banner2{
+    background: url("../../assets/images/bg2.png");
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 300px;
+}
